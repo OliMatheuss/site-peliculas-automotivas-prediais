@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "mariadb": "^3.4.5"
+  },
+  "scripts": {
+  "test": "node test.js"
+}
+}
