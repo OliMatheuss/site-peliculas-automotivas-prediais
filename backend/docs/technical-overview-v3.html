@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação Técnica - Sistema de Películas</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #4299e1;
+            --bg-light: #f7fafc;
+            --text: #2d3748;
+        }
+        
+        body {
+            font-family: Calibri, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            color: var(--text);
+            background: #fff;
+        }
+
+        .header-bg {
+            background: linear-gradient(150deg, #1a365d 0%, #2c5282 100%);
+            padding: 40px 0 0 0;
+            margin: -40px -40px 60px -40px;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 100px 40px;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="none"/><path d="M0 0L20 20M20 0L0 20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            background-size: 20px 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(150deg, 
+                rgba(26, 54, 93, 0.95) 0%,
+                rgba(44, 82, 130, 0.95) 100%);
+            z-index: 1;
+        }
+
+        .cover > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover h1 {
+            font-size: 48px;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 800;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .cover p {
+            font-size: 22px;
+            opacity: 0.95;
+            margin-top: 20px;
+            position: relative;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        h1 { 
+            font-size: 42px; 
+            color: var(--primary);
+            margin-top: 60px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--accent);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--primary);
+            display: inline-block;
+        }
+        
+        h2 { 
+            font-size: 32px; 
+            color: var(--secondary);
+            margin-top: 40px;
+            padding-left: 20px;
+            border-left: 6px solid var(--accent);
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        
+        h3 { 
+            font-size: 26px; 
+            color: var(--secondary);
+            margin-top: 30px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(66, 153, 225, 0.2);
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tech-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .tech-card h4 {
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(66, 153, 225, 0.1);
+        }
+
+        img { 
+            max-width: 100%; 
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        
+        .diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            overflow: auto;
+        }
+        
+        .diagram img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .diagram h3 {
+            margin-top: 0;
+        }
+
+        code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #EBF8FF 0%, #BEE3F8 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 6px solid var(--accent);
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(66, 153, 225, 0.1);
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2D3748;
+        }
+        
+        .info-box strong {
+            font-size: 20px;
+            color: #2B6CB0;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .arch-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            margin: 12px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.5;
+            transition: transform 0.15s ease;
+        }
+
+        .feature-list li:hover {
+            transform: translateX(2px);
+        }
+
+        .feature-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+        }
+
+        .feature-list li:not(:last-child) {
+            margin-bottom: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: var(--bg-light);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .endpoint-table td:first-child {
+            font-family: 'Consolas', monospace;
+            color: var(--secondary);
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+
+            .cover {
+                background: white !important;
+                color: var(--primary);
+                padding: 20px 0;
+                box-shadow: none;
+            }
+
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+                box-shadow: none;
+            }
+
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+
+            pre, code {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                border: 1px solid #e2e8f0;
+            }
+
+            .tech-card, .arch-item, .diagram {
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+            }
+
+            table {
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bg">
+        <div class="cover">
+            <h1>Sistema de Películas</h1>
+            <p class="subtitle">Documentação Técnica Completa</p>
+            <div class="tech-pills">
+                <span class="pill">React 18.2</span>
+                <span class="pill">Node.js</span>
+                <span class="pill">MariaDB</span>
+                <span class="pill">JWT</span>
+                <span class="pill">Express</span>
+            </div>
+            <div class="version">Versão 1.0 • Novembro 2025</div>
+        </div>
+    </div>
+
+    <div class="intro-box">
+        <div class="intro-header">Visão Geral do Sistema</div>
+        <p>Esta documentação técnica detalha a arquitetura completa do sistema de gerenciamento de películas prediais e automotivas,
+        incluindo frontend React, backend Node.js e banco de dados MariaDB. O sistema fornece uma solução integrada para gestão de serviços,
+        agendamentos e portfólio de trabalhos realizados.</p>
+    </div>
+
+    <h1>Stack Tecnológico</h1>
+
+<div class="tech-stack">
+    <div class="tech-card">
+        <h4>Frontend</h4>
+        <ul class="feature-list">
+            <li>React 18.2.0</li>
+            <li>React Router Dom 6.x</li>
+            <li>Styled Components 6.0</li>
+            <li>Context API para estado</li>
+            <li>Axios para requisições</li>
+            <li>React Icons</li>
+        </ul>
+    </div>
+
+    <div class="tech-card">
+        <h4>Backend</h4>
+        <ul class="feature-list">
+            <li>Node.js 18.x LTS</li>
+            <li>Express 4.18.2</li>
+            <li>JWT para autenticação</li>
+            <li>MariaDB 10.x</li>
+            <li>Multer para uploads</li>
+            <li>Express Validator</li>
+        </ul>
+    </div>
+
+    <div class="tech-card">
+        <h4>Database</h4>
+        <ul class="feature-list">
+            <li>MariaDB 10.x</li>
+            <li>Knex.js para queries</li>
+            <li>Migrations e Seeds</li>
+            <li>Backup automático</li>
+            <li>7 tabelas principais</li>
+            <li>Índices otimizados</li>
+        </ul>
+    </div>
+
+    <div class="tech-card">
+        <h4>DevOps</h4>
+        <ul class="feature-list">
+            <li>Git para versionamento</li>
+            <li>PM2 para processos</li>
+            <li>Nginx como proxy</li>
+            <li>Docker disponível</li>
+            <li>CI/CD com GitHub</li>
+            <li>Logs centralizados</li>
+        </ul>
+    </div>
+</div>
+
+<h1>Arquitetura do Sistema</h1>
+
+<div class="diagram">
+    <h3>Visão Geral do Sistema</h3>
+    <img src="diagrams/architecture.svg" alt="Diagrama de Arquitetura" width="800">
+</div>
+
+<div class="architecture-grid">
+    <div class="arch-item">
+        <h4>Frontend (React SPA)</h4>
+        <p>Single Page Application com rotas dinâmicas e gerenciamento de estado via Context API.</p>
+        <strong>Estrutura de pastas:</strong>
+        <pre>
+frontend/
+  ├── src/
+  │   ├── components/
+  │   │   ├── common/
+  │   │   ├── layout/
+  │   │   └── sections/
+  │   ├── pages/
+  │   │   ├── home/
+  │   │   ├── services/
+  │   │   └── admin/
+  │   ├── services/
+  │   │   ├── api/
+  │   │   └── utils/
+  │   └── contexts/
+  └── public/</pre>
+    </div>
+
+    <div class="arch-item">
+        <h4>Backend (Node.js)</h4>
+        <p>API RESTful com autenticação JWT e validação de dados.</p>
+        <strong>Estrutura de pastas:</strong>
+        <pre>
+backend/
+  ├── src/
+  │   ├── controllers/
+  │   ├── models/
+  │   ├── routes/
+  │   ├── middlewares/
+  │   ├── services/
+  │   └── config/
+  ├── uploads/
+  └── tests/</pre>
+    </div>
+</div>
+
+<h1>Modelo de Dados</h1>
+
+<div class="diagram">
+    <h3>Diagrama ER</h3>
+    <img src="diagrams/database.svg" alt="Diagrama ER do Banco de Dados" width="900">
+</div>
+
+<h2>📊 Tabelas Principais</h2>
+
+<table>
+    <tr>
+        <th>Tabela</th>
+        <th>Descrição</th>
+        <th>Campos Principais</th>
+        <th>Relacionamentos</th>
+    </tr>
+    <tr>
+        <td>usuarios</td>
+        <td>Armazena dados de usuários e admins</td>
+        <td>id, nome, email, senha, tipo</td>
+        <td>→ agendamentos, orcamentos</td>
+    </tr>
+    <tr>
+        <td>servicos</td>
+        <td>Catálogo de serviços oferecidos</td>
+        <td>id, nome, descricao, preco, tempo_estimado</td>
+        <td>→ agendamentos, portfolio</td>
+    </tr>
+    <tr>
+        <td>agendamentos</td>
+        <td>Registros de serviços agendados</td>
+        <td>id, usuario_id, servico_id, data, status</td>
+        <td>← usuarios, servicos</td>
+    </tr>
+    <tr>
+        <td>portfolio</td>
+        <td>Galeria de trabalhos realizados</td>
+        <td>id, servico_id, imagem, descricao</td>
+        <td>← servicos</td>
+    </tr>
+    <tr>
+        <td>avaliacoes</td>
+        <td>Avaliações dos clientes</td>
+        <td>id, usuario_id, servico_id, nota, comentario</td>
+        <td>← usuarios, servicos</td>
+    </tr>
+    <tr>
+        <td>orcamentos</td>
+        <td>Solicitações de orçamento</td>
+        <td>id, usuario_id, descricao, status</td>
+        <td>← usuarios</td>
+    </tr>
+    <tr>
+        <td>contatos</td>
+        <td>Mensagens de contato</td>
+        <td>id, nome, email, assunto, mensagem</td>
+        <td>-</td>
+    </tr>
+</table>
+
+<h1>Fluxos Principais</h1>
+
+<div class="diagram">
+    <h3>Fluxo de Autenticação</h3>
+    <img src="diagrams/auth.svg" alt="Fluxo de Autenticação" width="900">
+</div>
+
+<h2>Endpoints da API</h2>
+
+<table class="endpoint-table">
+    <tr>
+        <th>Endpoint</th>
+        <th>Método</th>
+        <th>Autenticação</th>
+        <th>Descrição</th>
+    </tr>
+    <tr>
+        <td>/api/auth/login</td>
+        <td>POST</td>
+        <td>Não</td>
+        <td>Autenticação de usuários</td>
+    </tr>
+    <tr>
+        <td>/api/auth/register</td>
+        <td>POST</td>
+        <td>Não</td>
+        <td>Registro de novos usuários</td>
+    </tr>
+    <tr>
+        <td>/api/servicos</td>
+        <td>GET</td>
+        <td>Não</td>
+        <td>Lista serviços disponíveis</td>
+    </tr>
+    <tr>
+        <td>/api/servicos/:id</td>
+        <td>GET</td>
+        <td>Não</td>
+        <td>Detalhes de um serviço</td>
+    </tr>
+    <tr>
+        <td>/api/agendamentos</td>
+        <td>POST</td>
+        <td>Sim</td>
+        <td>Cria novo agendamento</td>
+    </tr>
+    <tr>
+        <td>/api/agendamentos/:id</td>
+        <td>PUT</td>
+        <td>Sim</td>
+        <td>Atualiza agendamento</td>
+    </tr>
+    <tr>
+        <td>/api/portfolio</td>
+        <td>GET</td>
+        <td>Não</td>
+        <td>Retorna galeria de trabalhos</td>
+    </tr>
+    <tr>
+        <td>/api/portfolio/upload</td>
+        <td>POST</td>
+        <td>Sim</td>
+        <td>Upload de imagens</td>
+    </tr>
+</table>
+
+<h1>Deploy e Ambiente</h1>
+
+<div class="tech-stack">
+    <div class="tech-card">
+        <h4>Desenvolvimento</h4>
+        <pre>
+# Backend
+cd backend
+npm install
+npm run dev
+
+# Frontend
+cd frontend
+npm install
+npm start</pre>
+    </div>
+
+    <div class="tech-card">
+        <h4>Produção</h4>
+        <pre>
+# Backend
+npm install --production
+pm2 start npm --name "api" -- start
+
+# Frontend
+npm run build
+nginx -c nginx.conf</pre>
+    </div>
+</div>
+
+<h2>Requisitos de Sistema</h2>
+
+<div class="tech-stack">
+    <div class="tech-card">
+        <h4>Desenvolvimento</h4>
+        <ul class="feature-list">
+            <li>Node.js 18.x LTS</li>
+            <li>MariaDB 10.x</li>
+            <li>Git</li>
+            <li>VS Code (recomendado)</li>
+        </ul>
+    </div>
+
+    <div class="tech-card">
+        <h4>Produção</h4>
+        <ul class="feature-list">
+            <li>Ubuntu 22.04 LTS</li>
+            <li>4GB RAM (mínimo)</li>
+            <li>Nginx 1.18+</li>
+            <li>PM2</li>
+            <li>Certbot (SSL)</li>
+        </ul>
+    </div>
+</div>
+
+<h1>Próximos Passos</h1>
+
+<div class="info-box">
+<strong>Melhorias Planejadas:</strong>
+
+1. Implementar rotas REST faltantes para CRUD completo
+2. Adicionar sistema de upload de imagens com resize automático
+3. Implementar dashboard administrativo com métricas
+4. Criar testes automatizados (Jest + Supertest)
+5. Configurar pipeline CI/CD com GitHub Actions
+6. Implementar cache com Redis
+7. Adicionar documentação Swagger/OpenAPI
+8. Configurar monitoramento com PM2 + Grafana
+</div>
+
+<div class="footer">
+    Documentação gerada em 10 de novembro de 2025<br>
+    Sistema de Películas - Versão 1.0
+</div>
+
+</body>
+</html>

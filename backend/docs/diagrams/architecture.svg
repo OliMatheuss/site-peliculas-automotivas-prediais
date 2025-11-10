@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4299e1"/>
+        </marker>
+        
+        <!-- Gradientes -->
+        <linearGradient id="frontendGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3182ce;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#2c5282;stop-opacity:1" />
+        </linearGradient>
+        
+        <linearGradient id="backendGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#48bb78;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#2f855a;stop-opacity:1" />
+        </linearGradient>
+        
+        <linearGradient id="dbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ed8936;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#c05621;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Título -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">Arquitetura do Sistema</text>
+    
+    <!-- Frontend -->
+    <g transform="translate(50,80)">
+        <rect width="200" height="400" rx="15" fill="url(#frontendGrad)"/>
+        <text x="100" y="40" text-anchor="middle" font-family="Arial" font-size="18" fill="white">Frontend</text>
+        <text x="100" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="white">React SPA</text>
+        
+        <!-- Frontend Components -->
+        <rect x="20" y="100" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="125" text-anchor="middle" font-family="Arial" font-size="14">Components</text>
+        
+        <rect x="20" y="150" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="175" text-anchor="middle" font-family="Arial" font-size="14">Pages</text>
+        
+        <rect x="20" y="200" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="225" text-anchor="middle" font-family="Arial" font-size="14">Context API</text>
+        
+        <rect x="20" y="250" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="275" text-anchor="middle" font-family="Arial" font-size="14">API Services</text>
+    </g>
+    
+    <!-- Backend -->
+    <g transform="translate(300,80)">
+        <rect width="200" height="400" rx="15" fill="url(#backendGrad)"/>
+        <text x="100" y="40" text-anchor="middle" font-family="Arial" font-size="18" fill="white">Backend</text>
+        <text x="100" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Node.js + Express</text>
+        
+        <!-- Backend Components -->
+        <rect x="20" y="100" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="125" text-anchor="middle" font-family="Arial" font-size="14">Routes</text>
+        
+        <rect x="20" y="150" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="175" text-anchor="middle" font-family="Arial" font-size="14">Controllers</text>
+        
+        <rect x="20" y="200" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="225" text-anchor="middle" font-family="Arial" font-size="14">Models</text>
+        
+        <rect x="20" y="250" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="275" text-anchor="middle" font-family="Arial" font-size="14">Middlewares</text>
+    </g>
+    
+    <!-- Database -->
+    <g transform="translate(550,80)">
+        <rect width="200" height="400" rx="15" fill="url(#dbGrad)"/>
+        <text x="100" y="40" text-anchor="middle" font-family="Arial" font-size="18" fill="white">Database</text>
+        <text x="100" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="white">MariaDB</text>
+        
+        <!-- Database Tables -->
+        <rect x="20" y="100" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="125" text-anchor="middle" font-family="Arial" font-size="14">Usuarios</text>
+        
+        <rect x="20" y="150" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="175" text-anchor="middle" font-family="Arial" font-size="14">Servicos</text>
+        
+        <rect x="20" y="200" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="225" text-anchor="middle" font-family="Arial" font-size="14">Agendamentos</text>
+        
+        <rect x="20" y="250" width="160" height="40" rx="5" fill="white" fill-opacity="0.9"/>
+        <text x="100" y="275" text-anchor="middle" font-family="Arial" font-size="14">Portfolio</text>
+    </g>
+    
+    <!-- Conexões -->
+    <g>
+        <!-- Frontend to Backend -->
+        <line x1="250" y1="280" x2="300" y2="280" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="275" y="270" text-anchor="middle" font-family="Arial" font-size="12">HTTP/REST</text>
+        
+        <!-- Backend to Database -->
+        <line x1="500" y1="280" x2="550" y2="280" stroke="#48bb78" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="525" y="270" text-anchor="middle" font-family="Arial" font-size="12">SQL</text>
+    </g>
+    
+    <!-- Legenda -->
+    <g transform="translate(50,500)">
+        <rect width="700" height="80" rx="10" fill="#f7fafc"/>
+        <text x="350" y="30" text-anchor="middle" font-family="Arial" font-size="16" fill="#2d3748">Tecnologias Principais</text>
+        <text x="100" y="60" font-family="Arial" font-size="14" fill="#4299e1">React 18.2</text>
+        <text x="350" y="60" font-family="Arial" font-size="14" fill="#48bb78">Node.js 18.x LTS</text>
+        <text x="600" y="60" font-family="Arial" font-size="14" fill="#ed8936">MariaDB 10.x</text>
+    </g>
+</svg>

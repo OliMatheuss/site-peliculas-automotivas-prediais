@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4299e1"/>
+        </marker>
+        
+        <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0.1" />
+            <stop offset="100%" style="stop-color:#2c5282;stop-opacity:0.1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Título -->
+    <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">Fluxo de Autenticação</text>
+    
+    <!-- Atores -->
+    <g transform="translate(100,80)">
+        <rect width="150" height="60" rx="10" fill="url(#boxGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="75" y="35" text-anchor="middle" font-family="Arial" font-size="16">👤 Cliente</text>
+    </g>
+    
+    <g transform="translate(300,80)">
+        <rect width="150" height="60" rx="10" fill="url(#boxGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="75" y="35" text-anchor="middle" font-family="Arial" font-size="16">🎨 Frontend</text>
+    </g>
+    
+    <g transform="translate(500,80)">
+        <rect width="150" height="60" rx="10" fill="url(#boxGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="75" y="35" text-anchor="middle" font-family="Arial" font-size="16">⚙️ Backend</text>
+    </g>
+    
+    <g transform="translate(700,80)">
+        <rect width="150" height="60" rx="10" fill="url(#boxGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="75" y="35" text-anchor="middle" font-family="Arial" font-size="16">💾 Database</text>
+    </g>
+    
+    <!-- Linhas de Vida -->
+    <line x1="175" y1="140" x2="175" y2="500" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="375" y1="140" x2="375" y2="500" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="575" y1="140" x2="575" y2="500" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="775" y1="140" x2="775" y2="500" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Mensagens -->
+    <g>
+        <!-- Login Form Submit -->
+        <path d="M 175,180 L 375,180" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="225" y="160" width="100" height="20" rx="5" fill="#ebf8ff"/>
+        <text x="275" y="175" text-anchor="middle" font-family="Arial" font-size="12">Login Form</text>
+        
+        <!-- API Call -->
+        <path d="M 375,220 L 575,220" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="425" y="200" width="100" height="20" rx="5" fill="#ebf8ff"/>
+        <text x="475" y="215" text-anchor="middle" font-family="Arial" font-size="12">/api/auth/login</text>
+        
+        <!-- Validar Input -->
+        <rect x="525" y="230" width="100" height="30" rx="5" fill="#ebf8ff"/>
+        <text x="575" y="250" text-anchor="middle" font-family="Arial" font-size="12">Validar Dados</text>
+        
+        <!-- DB Query -->
+        <path d="M 575,280 L 775,280" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="625" y="260" width="100" height="20" rx="5" fill="#ebf8ff"/>
+        <text x="675" y="275" text-anchor="middle" font-family="Arial" font-size="12">Query User</text>
+        
+        <!-- DB Response -->
+        <path d="M 775,320 L 575,320" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="625" y="300" width="100" height="20" rx="5" fill="#ebf8ff"/>
+        <text x="675" y="315" text-anchor="middle" font-family="Arial" font-size="12">User Data</text>
+        
+        <!-- Generate JWT -->
+        <rect x="525" y="330" width="100" height="30" rx="5" fill="#ebf8ff"/>
+        <text x="575" y="350" text-anchor="middle" font-family="Arial" font-size="12">Gerar JWT</text>
+        
+        <!-- Send Token -->
+        <path d="M 575,380 L 375,380" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="425" y="360" width="100" height="20" rx="5" fill="#ebf8ff"/>
+        <text x="475" y="375" text-anchor="middle" font-family="Arial" font-size="12">JWT Token</text>
+        
+        <!-- Store Token -->
+        <rect x="325" y="390" width="100" height="30" rx="5" fill="#ebf8ff"/>
+        <text x="375" y="410" text-anchor="middle" font-family="Arial" font-size="12">Store Token</text>
+        
+        <!-- Success -->
+        <path d="M 375,440 L 175,440" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="225" y="420" width="100" height="20" rx="5" fill="#ebf8ff"/>
+        <text x="275" y="435" text-anchor="middle" font-family="Arial" font-size="12">Login Success</text>
+    </g>
+    
+    <!-- Notas -->
+    <g transform="translate(50,520)">
+        <rect width="800" height="60" rx="10" fill="#f7fafc"/>
+        <text x="400" y="25" text-anchor="middle" font-family="Arial" font-size="14" fill="#2d3748">🔒 Segurança: Senha é hasheada com bcrypt</text>
+        <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="14" fill="#2d3748">🎫 Token JWT expira em 24 horas</text>
+    </g>
+</svg>

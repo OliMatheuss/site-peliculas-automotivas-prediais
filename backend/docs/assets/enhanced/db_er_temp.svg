@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4299e1"/>
+        </marker>
+        
+        <linearGradient id="tableGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0.1" />
+            <stop offset="100%" style="stop-color:#2c5282;stop-opacity:0.1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Title -->
+    <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">Modelo de Dados</text>
+    
+    <!-- Usuarios Table -->
+    <g transform="translate(50,80)">
+        <rect width="250" height="160" rx="10" fill="url(#tableGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="125" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2c5282">Usuarios</text>
+        <line x1="20" y1="40" x2="230" y2="40" stroke="#4299e1" stroke-width="1"/>
+        <text x="30" y="60" font-family="Arial" font-size="14">🔑 id (PK)</text>
+        <text x="30" y="85" font-family="Arial" font-size="14">📝 nome (VARCHAR)</text>
+        <text x="30" y="110" font-family="Arial" font-size="14">📧 email (VARCHAR)</text>
+        <text x="30" y="135" font-family="Arial" font-size="14">🔒 senha (VARCHAR)</text>
+    </g>
+    
+    <!-- Servicos Table -->
+    <g transform="translate(350,80)">
+        <rect width="250" height="160" rx="10" fill="url(#tableGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="125" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2c5282">Servicos</text>
+        <line x1="20" y1="40" x2="230" y2="40" stroke="#4299e1" stroke-width="1"/>
+        <text x="30" y="60" font-family="Arial" font-size="14">🔑 id (PK)</text>
+        <text x="30" y="85" font-family="Arial" font-size="14">📝 nome (VARCHAR)</text>
+        <text x="30" y="110" font-family="Arial" font-size="14">💰 preco (DECIMAL)</text>
+        <text x="30" y="135" font-family="Arial" font-size="14">⏱️ duracao (INT)</text>
+    </g>
+    
+    <!-- Agendamentos Table -->
+    <g transform="translate(50,300)">
+        <rect width="250" height="160" rx="10" fill="url(#tableGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="125" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2c5282">Agendamentos</text>
+        <line x1="20" y1="40" x2="230" y2="40" stroke="#4299e1" stroke-width="1"/>
+        <text x="30" y="60" font-family="Arial" font-size="14">🔑 id (PK)</text>
+        <text x="30" y="85" font-family="Arial" font-size="14">🔗 usuario_id (FK)</text>
+        <text x="30" y="110" font-family="Arial" font-size="14">🔗 servico_id (FK)</text>
+        <text x="30" y="135" font-family="Arial" font-size="14">📅 data (DATETIME)</text>
+    </g>
+    
+    <!-- Portfolio Table -->
+    <g transform="translate(350,300)">
+        <rect width="250" height="160" rx="10" fill="url(#tableGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="125" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2c5282">Portfolio</text>
+        <line x1="20" y1="40" x2="230" y2="40" stroke="#4299e1" stroke-width="1"/>
+        <text x="30" y="60" font-family="Arial" font-size="14">🔑 id (PK)</text>
+        <text x="30" y="85" font-family="Arial" font-size="14">🔗 servico_id (FK)</text>
+        <text x="30" y="110" font-family="Arial" font-size="14">🖼️ imagem (VARCHAR)</text>
+        <text x="30" y="135" font-family="Arial" font-size="14">📝 descricao (TEXT)</text>
+    </g>
+    
+    <!-- Avaliacoes Table -->
+    <g transform="translate(650,80)">
+        <rect width="250" height="160" rx="10" fill="url(#tableGrad)" stroke="#4299e1" stroke-width="2"/>
+        <text x="125" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2c5282">Avaliacoes</text>
+        <line x1="20" y1="40" x2="230" y2="40" stroke="#4299e1" stroke-width="1"/>
+        <text x="30" y="60" font-family="Arial" font-size="14">🔑 id (PK)</text>
+        <text x="30" y="85" font-family="Arial" font-size="14">🔗 usuario_id (FK)</text>
+        <text x="30" y="110" font-family="Arial" font-size="14">🔗 servico_id (FK)</text>
+        <text x="30" y="135" font-family="Arial" font-size="14">⭐ nota (INT)</text>
+    </g>
+    
+    <!-- Relationships -->
+    <g stroke="#4299e1" stroke-width="2" fill="none">
+        <!-- Usuarios -> Agendamentos -->
+        <path d="M 175,240 L 175,300" marker-end="url(#arrow)"/>
+        <!-- Servicos -> Agendamentos -->
+        <path d="M 475,240 L 300,380" marker-end="url(#arrow)"/>
+        <!-- Servicos -> Portfolio -->
+        <path d="M 475,240 L 475,300" marker-end="url(#arrow)"/>
+        <!-- Usuarios -> Avaliacoes -->
+        <path d="M 300,160 L 650,160" marker-end="url(#arrow)"/>
+        <!-- Servicos -> Avaliacoes -->
+        <path d="M 600,160 L 650,160" marker-end="url(#arrow)"/>
+    </g>
+    
+    <!-- Legend -->
+    <g transform="translate(50,500)">
+        <rect width="800" height="100" rx="10" fill="#f7fafc" stroke="#e2e8f0"/>
+        <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="16" fill="#2d3748">Legenda</text>
+        <text x="100" y="60" font-family="Arial" font-size="14">🔑 Chave Primária</text>
+        <text x="300" y="60" font-family="Arial" font-size="14">🔗 Chave Estrangeira</text>
+        <text x="500" y="60" font-family="Arial" font-size="14">📝 Texto</text>
+        <text x="700" y="60" font-family="Arial" font-size="14">💰 Numérico</text>
+    </g>
+</svg>
