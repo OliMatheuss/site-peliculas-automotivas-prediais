@@ -11,6 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Rotas
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 // Rota de teste
 app.get('/', (req, res) => {
   res.json({ message: 'API está funcionando!' });
