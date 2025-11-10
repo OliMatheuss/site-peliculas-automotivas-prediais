@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680">
+  <style>
+    .table { fill:#fff7ed; stroke:#b45309; stroke-width:2px; rx:6 }
+    .title { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700; font-size:14px; fill:#7c2d12 }
+    .col { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:12px; fill:#462a16 }
+    .fk-line { stroke:#1f2937; stroke-width:1.5 }
+  </style>
+
+  <!-- Usuarios -->
+  <rect x="40" y="40" width="240" height="140" class="table"/>
+  <text x="160" y="65" text-anchor="middle" class="title">usuarios</text>
+  <text x="60" y="95" class="col">id (PK)</text>
+  <text x="60" y="115" class="col">nome</text>
+  <text x="60" y="135" class="col">email</text>
+  <text x="60" y="155" class="col">senha</text>
+
+  <!-- Servicos -->
+  <rect x="420" y="40" width="240" height="160" class="table"/>
+  <text x="540" y="65" text-anchor="middle" class="title">servicos</text>
+  <text x="440" y="100" class="col">id (PK)</text>
+  <text x="440" y="120" class="col">nome</text>
+  <text x="440" y="140" class="col">tipo</text>
+  <text x="440" y="160" class="col">preco_base</text>
+
+  <!-- Agendamentos -->
+  <rect x="780" y="40" width="260" height="180" class="table"/>
+  <text x="910" y="65" text-anchor="middle" class="title">agendamentos</text>
+  <text x="800" y="100" class="col">id (PK)</text>
+  <text x="800" y="120" class="col">cliente_id (FK → usuarios.id)</text>
+  <text x="800" y="140" class="col">servico_id (FK → servicos.id)</text>
+  <text x="800" y="160" class="col">data_agendada</text>
+
+  <!-- Portfolio -->
+  <rect x="40" y="240" width="320" height="160" class="table"/>
+  <text x="200" y="270" text-anchor="middle" class="title">portfolio</text>
+  <text x="60" y="300" class="col">id (PK)</text>
+  <text x="60" y="320" class="col">titulo</text>
+  <text x="60" y="340" class="col">imagem_antes</text>
+  <text x="60" y="360" class="col">imagem_depois</text>
+  <text x="60" y="380" class="col">servico_id (FK → servicos.id)</text>
+
+  <!-- Orcamentos -->
+  <rect x="420" y="260" width="300" height="160" class="table"/>
+  <text x="570" y="290" text-anchor="middle" class="title">orcamentos</text>
+  <text x="440" y="320" class="col">id (PK)</text>
+  <text x="440" y="340" class="col">cliente_id (FK → usuarios.id)</text>
+  <text x="440" y="360" class="col">servico_id (FK → servicos.id)</text>
+
+  <!-- Avaliacoes -->
+  <rect x="780" y="260" width="300" height="140" class="table"/>
+  <text x="930" y="290" text-anchor="middle" class="title">avaliacoes</text>
+  <text x="800" y="320" class="col">id (PK)</text>
+  <text x="800" y="340" class="col">cliente_id (FK → usuarios.id)</text>
+  <text x="800" y="360" class="col">servico_id (FK → servicos.id)</text>
+
+  <!-- Contatos -->
+  <rect x="40" y="460" width="300" height="120" class="table"/>
+  <text x="190" y="490" text-anchor="middle" class="title">contatos</text>
+  <text x="60" y="520" class="col">id (PK)</text>
+  <text x="60" y="540" class="col">nome, email, mensagem</text>
+
+  <!-- FK lines -->
+  <line x1="200" y1="180" x2="460" y2="180" class="fk-line" marker-end="url(#dot)" />
+  <line x1="560" y1="200" x2="840" y2="200" class="fk-line" marker-end="url(#dot)" />
+  <line x1="560" y1="360" x2="840" y2="360" class="fk-line" marker-end="url(#dot)" />
+
+  <defs>
+    <marker id="dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+      <circle cx="3" cy="3" r="3" fill="#1f2937" />
+    </marker>
+  </defs>
+
+  <text x="40" y="620" class="col">Diagrama ER simplificado: relações principais entre tabelas centrais.</text>
+</svg>
